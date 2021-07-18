@@ -4,7 +4,7 @@ import { document } from "../utils/dynamodbCliente";
 
 
 interface ICreateTodo{
-  user_id: string;
+  userid: string;
   title: string;
   deadline: Date;
 }
@@ -12,16 +12,16 @@ interface ICreateTodo{
 export const handle = async (event) =>{
 
   const id = uuidv4();
-  const { user_id } = event.pathParameters as ICreateTodo;
+  const { userid } = event.pathParameters as ICreateTodo;
   const { title, deadline } = JSON.parse(event.body) as ICreateTodo;
-  console.log(user_id)
+ 
  
  
   await document.put({
   TableName: "users_todos",
   Item: {
     id,
-    user_id,
+    userid,
     title,
     done: false,
     deadline

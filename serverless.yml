@@ -27,14 +27,14 @@ functions:
     handler: src/functions/createToDos.handle
     events:
       - http: 
-          path: todos/{user_id}
+          path: todos/{userid}
           method: POST
           cors: true
   listTodos:
     handler: src/functions/listToDos.handle
     events:
       - http: 
-          path: todos/{user_id}
+          path: todos/{userid}
           method: GET
           cors: true
 
@@ -48,12 +48,12 @@ resources:
           ReadCapacityUnits: 5
           WriteCapacityUnits: 5
         AttributeDefinitions:
-          - AttributeName: user_id
+          - AttributeName: userid
             AttributeType: S
           - AttributeName: id
             AttributeType: S
         KeySchema:
-          - AttributeName: user_id
+          - AttributeName: userid
             KeyType: HASH
           - AttributeName: id
             KeyType: RANGE

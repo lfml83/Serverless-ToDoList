@@ -3,14 +3,14 @@ import { APIGatewayProxyHandler } from "aws-lambda";
 
 export const handle : APIGatewayProxyHandler= async (event) => {
 
-  const { user_id } = event.pathParameters;
+  const { userid } = event.pathParameters;
 
 
   const response = await document.query({
     TableName: "users_todos",
-    KeyConditionExpression: "user_id = :user_id",
+    KeyConditionExpression: "userid = :userid",
     ExpressionAttributeValues: {
-      ":user_id": user_id,
+      ":userid": userid,
     },
   }).promise();
 
